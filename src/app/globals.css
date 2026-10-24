@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #0a0a0a;
+  --color-foreground: #fafafa;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+/* Dark base for every page — sections may paint their own backgrounds on top. */
+body {
+  background: #0a0a0a;
+  color: #fafafa;
+}
+
+@keyframes formo-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.formo-anim {
+  animation: formo-in 0.32s cubic-bezier(0.21, 1.02, 0.73, 1) both;
+}
+
+@keyframes formo-shake-kf {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+}
+
+.formo-shake {
+  animation: formo-shake-kf 0.18s ease-in-out 2;
+}
+
+/* ---------- 3D landing page surfaces ---------- */
+
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.text-gradient {
+  background: linear-gradient(100deg, #818cf8 0%, #c084fc 45%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Perspective grid floor that fades into the page */
+.grid-floor {
+  background-image:
+    linear-gradient(rgba(129, 140, 248, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(129, 140, 248, 0.16) 1px, transparent 1px);
+  background-size: 44px 44px;
+  transform: perspective(600px) rotateX(58deg) scale(2.4);
+  transform-origin: center top;
+  mask-image: linear-gradient(to bottom, transparent 30%, rgba(0, 0, 0, 0.75) 78%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 30%, rgba(0, 0, 0, 0.75) 78%, transparent);
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0) rotate(var(--fr, 0deg)); }
+  50% { transform: translateY(-14px) rotate(var(--fr, 0deg)); }
+}
+
+.float-chip {
+  animation: float-y 5.5s ease-in-out infinite;
+}
+
+@keyframes orb-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(36px, -28px) scale(1.08); }
+  66% { transform: translate(-28px, 20px) scale(0.94); }
+}
+
+.orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  animation: orb-drift 14s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shine-sweep {
+  0% { transform: translateX(-120%) skewX(-18deg); }
+  100% { transform: translateX(240%) skewX(-18deg); }
+}
+
+.shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+  animation: shine-sweep 3.4s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 32px rgba(99, 102, 241, 0.35), 0 8px 24px rgba(0, 0, 0, 0.4); }
+  50% { box-shadow: 0 0 54px rgba(99, 102, 241, 0.6), 0 8px 24px rgba(0, 0, 0, 0.4); }
+}
+
+.pulse-glow {
+  animation: pulse-glow 3.2s ease-in-out infinite;
+}
+
+/* Gradient border card */
+.grad-border {
+  position: relative;
+  background: rgba(10, 10, 12, 0.7);
+}
+
+.grad-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(129, 140, 248, 0.55), rgba(192, 132, 252, 0.25) 40%, rgba(34, 211, 238, 0.45));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-chip, .orb, .shine::after, .pulse-glow { animation: none; }
+}
