@@ -44,7 +44,7 @@ export default function LoginForm() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         className="mt-1.5 w-full rounded-lg border border-neutral-700 bg-neutral-800 px-3 py-2.5 text-white outline-none placeholder:text-neutral-500 focus:border-indigo-500"
-        placeholder="admin@formcraft.local"
+        placeholder="demo@formcraft.local"
         autoComplete="username"
       />
 

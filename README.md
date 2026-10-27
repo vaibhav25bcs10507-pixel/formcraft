@@ -164,8 +164,10 @@ npm run dev
 Open **[http://localhost:3000](http://localhost:3000)** in your browser.
 
 - Visit `/login` to sign in to the Admin Dashboard.
-- **Default Email**: `admin@formcraft.local`
-- **Default Password**: `formcraft-admin`
+- **Local defaults** (when no env vars are set): `admin@formcraft.local` / `formcraft-admin`
+- **Live demo** (https://formcraft-4sqx.onrender.com): `demo@formcraft.local` / `formcraft-demo`
+
+> Change `ADMIN_EMAIL` / `ADMIN_PASSWORD` before using this for anything beyond a demo.
 
 ### 3. Production Build & Run
 ```bash

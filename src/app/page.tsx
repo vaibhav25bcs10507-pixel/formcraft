@@ -147,8 +147,8 @@ export default function Home() {
               </Link>
             </div>
             <p className="mt-5 text-sm text-neutral-500">
-              Demo login: <code className="rounded bg-white/5 px-1.5 py-0.5">admin@formcraft.local</code> /{" "}
-              <code className="rounded bg-white/5 px-1.5 py-0.5">formcraft-admin</code>
+              Live demo login: <code className="rounded bg-white/5 px-1.5 py-0.5">demo@formcraft.local</code> /{" "}
+              <code className="rounded bg-white/5 px-1.5 py-0.5">formcraft-demo</code>
             </p>
           </div>
 
