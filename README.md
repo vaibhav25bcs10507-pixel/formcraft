@@ -185,13 +185,16 @@ docker compose up -d
 FormCraft is designed to run in any containerized or Node.js environment:
 
 ### Deploy to Render
+
+**Live instance:** https://formcraft-4sqx.onrender.com (free tier — the first request after 15 minutes of inactivity may take ~30–60s to wake).
+
 1. Create a **Web Service** on [Render](https://render.com).
 2. Connect your GitHub repository.
 3. Choose **Node** environment:
-   - **Build Command**: `npm install && npm run build`
+   - **Build Command**: `npm ci && npm run build`
    - **Start Command**: `npm start`
-4. Add a Persistent Disk mounted at `/usr/src/app/data` (or `./data`) so SQLite data persists across re-deploys.
-5. Set `ADMIN_EMAIL`, `ADMIN_PASSWORD`, and `AUTH_SECRET` in Environment Settings.
+4. Set `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `AUTH_SECRET`, `COOKIE_SECURE=true`, and `DATA_DIR=./data` in Environment Settings.
+5. Optional: attach a Persistent Disk at `/data` and set `DATA_DIR=/data` if you want SQLite data to survive redeploys. The demo deployment intentionally runs without a disk, so data resets on redeploy.
 
 ### Deploy to Railway / Fly.io / VPS
 Use the included `Dockerfile` and `docker-compose.yml` for automated container deployment.
@@ -202,10 +205,10 @@ Use the included `Dockerfile` and `docker-compose.yml` for automated container d
 
 ```text
 Project Name: FormCraft — High-Conversion Conversational Form Engine
-Student Name: [Your Name]
+Student Name: Vaibhav (25BCS10507)
 Problem Statement: Elimination of form abandonment through conversational UX and self-hosted data ownership
 GitHub Repository: https://github.com/vaibhav25bcs10507-pixel/formcraft
-Deployed Application: [Your Live URL]
+Deployed Application: https://formcraft-4sqx.onrender.com
 Demo Video: [Link to 3–5 min video demo]
 Tech Stack: Next.js 16, React 19, TypeScript, Tailwind CSS 4, SQLite, Drizzle ORM, Lucide
 Major Features:
