@@ -27,7 +27,7 @@ export async function GET(req: Request) {
   function close(){ wrap.style.display='none'; document.body.style.overflow=''; }
   btn.onclick = open;
   wrap.onclick = function(e){ if (e.target === wrap) close(); };
-  window.addEventListener('message', function(e){ if (e.data === 'formcraft:close' || e.data === 'formo:close') close(); });
+  window.addEventListener('message', function(e){ if (e.data === 'formcraft:close') close(); });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
   document.body.appendChild(btn); document.body.appendChild(wrap);
 })();`;

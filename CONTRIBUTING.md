@@ -1,17 +1,18 @@
-# Contributing to Formo 🤝
+# Contributing to FormCraft 🤝
 
-Thanks for considering it — Formo is intentionally small (~2.5k LOC) so you can
-hold the whole codebase in your head in an afternoon.
+Thanks for considering it — FormCraft is intentionally small enough to hold in
+your head over an afternoon.
 
 ## Getting set up
 
 ```bash
-git clone https://github.com/Abhishekpundir23/formo && cd formo
+git clone https://github.com/vaibhav25bcs10507-pixel/formcraft && cd formcraft
 npm install
 npm run dev        # http://localhost:3000
 ```
 
-Login with the dev defaults: `admin@formo.local` / `formo-admin`.
+Login with the dev defaults: `admin@formcraft.local` / `formcraft-admin`.
+Set `SEED_DEMO=true` if you want the workspace pre-filled with sample forms.
 
 ## Before opening a PR
 
@@ -24,20 +25,22 @@ BASE_URL=http://localhost:3000 npm run test:e2e   # 23 end-to-end checks
 
 The E2E suite runs a real browser against a running server — start one first
 (`npm run build && npm start` on any port, then point `BASE_URL` at it).
+If the bundled Playwright browser is missing, set `CHROME_PATH=/usr/bin/chromium`.
 
 ## Code map
 
 - `src/components/ConversationalForm.tsx` — the one-question-at-a-time renderer
 - `src/components/builder/FormBuilder.tsx` — the editor + live preview + share kit
-- `src/app/api/` — route handlers (forms, submissions, AI, settings)
-- `src/lib/` — types, auth, AI generation, utilities
+- `src/app/dashboard/FormList.tsx` — workspace list with search, filters, sorting
+- `src/app/api/` — route handlers (forms, submissions, AI, settings, exports)
+- `src/lib/` — types, auth, AI generation, templates, utilities
 - `src/db/` — SQLite schema (Drizzle); tables auto-create on boot
+- `scripts/e2e.mjs` — browser-driven end-to-end suite
 
 ## Good first issues
 
-Check the [issue tracker](../../issues) for `good first issue` labels. Popular
-requests waiting for a champion: file upload questions, partial response
-capture, multi-user teams.
+File upload questions, partial response capture, multi-user teams, and
+Slack/Discord notification channels are all open for a champion.
 
 ## Ground rules
 

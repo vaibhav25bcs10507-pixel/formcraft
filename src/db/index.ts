@@ -8,13 +8,10 @@ import { seedDemoData } from "./seed";
 const DATA_DIR = process.env.DATA_DIR || path.join(process.cwd(), "data");
 fs.mkdirSync(DATA_DIR, { recursive: true });
 
-const globalForDb = globalThis as unknown as { __formoDb?: ReturnType<typeof createDb> };
+const globalForDb = globalThis as unknown as { __formcraftDb?: ReturnType<typeof createDb> };
 
 function createDb() {
-  const dbPath = fs.existsSync(path.join(DATA_DIR, "formo.db"))
-    ? path.join(DATA_DIR, "formo.db")
-    : path.join(DATA_DIR, "formcraft.db");
-  const sqlite = new Database(dbPath);
+  const sqlite = new Database(path.join(DATA_DIR, "formcraft.db"));
   sqlite.pragma("busy_timeout = 10000");
   sqlite.pragma("journal_mode = WAL");
   sqlite.exec(`
@@ -51,6 +48,6 @@ function createDb() {
   return database;
 }
 
-export const db = globalForDb.__formoDb ?? createDb();
-if (!globalForDb.__formoDb) globalForDb.__formoDb = db;
+export const db = globalForDb.__formcraftDb ?? createDb();
+if (!globalForDb.__formcraftDb) globalForDb.__formcraftDb = db;
 export { schema };

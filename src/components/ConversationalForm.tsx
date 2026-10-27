@@ -209,7 +209,7 @@ export default function ConversationalForm({ form, mode = "live", onRestart, emb
       <input
         ref={hpRef}
         type="text"
-        name="formo_website"
+        name="formcraft_website"
         tabIndex={-1}
         autoComplete="off"
         aria-hidden="true"
@@ -219,7 +219,7 @@ export default function ConversationalForm({ form, mode = "live", onRestart, emb
       <div className="flex flex-1 items-center justify-center px-6 py-12 sm:px-10">
         <div className="w-full max-w-xl">
           {stage === "welcome" && (
-            <div key="welcome" className="formo-anim">
+            <div key="welcome" className="formcraft-anim">
               <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
                 {settings.welcomeTitle || form.title}
               </h1>
@@ -262,7 +262,7 @@ export default function ConversationalForm({ form, mode = "live", onRestart, emb
           )}
 
           {stage === "done" && (
-            <div key="done" className="formo-anim text-center">
+            <div key="done" className="formcraft-anim text-center">
               <div
                 className="mx-auto flex h-16 w-16 items-center justify-center rounded-full text-3xl"
                 style={{ background: "var(--brand-soft)" }}
@@ -288,7 +288,6 @@ export default function ConversationalForm({ form, mode = "live", onRestart, emb
                 <button
                   onClick={() => {
                     window.parent?.postMessage("formcraft:close", "*");
-                    window.parent?.postMessage("formo:close", "*");
                   }}
                   className="mt-8 block w-full rounded-lg border px-4 py-2 text-sm font-medium"
                 >
@@ -405,7 +404,7 @@ function QuestionCard({
   }
 
   return (
-    <div key={q.id} className="formo-anim">
+    <div key={q.id} className="formcraft-anim">
       <div className="flex items-center justify-between">
         <p className={cn("text-sm font-semibold uppercase tracking-widest", muted)}>
           {index + 1} / {total}
@@ -543,7 +542,7 @@ function QuestionCard({
         )}
       </div>
 
-      {error && <p className="formo-shake mt-3 text-sm font-medium text-red-500">{error}</p>}
+      {error && <p className="formcraft-shake mt-3 text-sm font-medium text-red-500">{error}</p>}
 
       <div className="mt-8 flex flex-wrap items-center gap-4">
         <AdvanceButton

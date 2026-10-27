@@ -1,13 +1,24 @@
 ---
-name: "☁️ Cloud waitlist"
-about: Get notified when the hosted Formo cloud launches
-title: "Cloud waitlist: <your name/handle>"
-labels: waitlist
+name: "💡 Feature request"
+about: Suggest an improvement to FormCraft
+title: "[Feature]: <short summary>"
+labels: enhancement
 ---
 
-One click — just submit this issue and you're on the list.
+**What problem does this solve?**
 
-- **Where should we announce?** (Twitter/X handle, email, or just comment below)
-- **What would make you pay for hosted Formo?** (optional, helps us prioritize)
+<!-- A short paragraph on the pain point you hit. -->
 
-The self-hosted version stays free and open source (AGPL-3.0) forever. The cloud is for people who want zero-setup.
+**What would you expect to happen?**
+
+<!-- Describe the behaviour you want. -->
+
+**Alternatives you considered**
+
+<!-- Any workaround you used today. -->
+
+**Environment**
+
+- FormCraft version / commit: <!-- e.g. v1.0.0 -->
+- Deployment: <!-- Render / Docker / local -->
+- Browser & OS:

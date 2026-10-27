@@ -13,7 +13,7 @@ body {
   color: #fafafa;
 }
 
-@keyframes formo-in {
+@keyframes formcraft-in {
   from {
     opacity: 0;
     transform: translateY(16px);
@@ -24,11 +24,11 @@ body {
   }
 }
 
-.formo-anim {
-  animation: formo-in 0.32s cubic-bezier(0.21, 1.02, 0.73, 1) both;
+.formcraft-anim {
+  animation: formcraft-in 0.32s cubic-bezier(0.21, 1.02, 0.73, 1) both;
 }
 
-@keyframes formo-shake-kf {
+@keyframes formcraft-shake-kf {
   0%,
   100% {
     transform: translateX(0);
@@ -41,8 +41,8 @@ body {
   }
 }
 
-.formo-shake {
-  animation: formo-shake-kf 0.18s ease-in-out 2;
+.formcraft-shake {
+  animation: formcraft-shake-kf 0.18s ease-in-out 2;
 }
 
 /* ---------- 3D landing page surfaces ---------- */
