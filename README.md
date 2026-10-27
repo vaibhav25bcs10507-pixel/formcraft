@@ -13,6 +13,19 @@
 
 ---
 
+## 📸 Screenshots
+
+| | |
+|---|---|
+| ![Landing](docs/screenshots/01-landing.png) | ![Dashboard](docs/screenshots/03-dashboard.png) |
+| Landing page with an interactive live demo | Workspace dashboard — metrics, search, status filters, sorting |
+| ![Builder](docs/screenshots/04-builder.png) | ![Responses](docs/screenshots/05-responses.png) |
+| Split-screen builder with live preview | Per-question analytics + individual response drill-down |
+| ![Public form](docs/screenshots/06-public-form.png) | ![Login](docs/screenshots/02-login.png) |
+| Conversational runner (one question at a time) | Admin sign-in (HMAC-signed session cookie) |
+
+---
+
 ## 📌 Problem Statement
 
 Traditional online forms (Google Forms, SurveyMonkey, standard web forms) suffer from dismal completion rates (often <15%) because respondents are presented with a giant wall of input fields. Conversely, premium conversational form tools like Typeform charge exorbitant fees ($35–$100+/month), impose strict monthly response caps, paywall basic conditional branching, and store sensitive respondent data on proprietary third-party cloud infrastructure.
@@ -139,6 +152,7 @@ Copy `.env.example` to `.env` or set these in your hosting environment:
 | `OPENAI_API_KEY` | *(optional)* | OpenAI or Groq/Ollama API key for AI form generation |
 | `OPENAI_BASE_URL`| `https://api.openai.com/v1` | Custom endpoint for OpenAI-compatible LLM providers |
 | `AI_MODEL` | `gpt-4o-mini` | AI model name for drafting form questions |
+| `SEED_DEMO` | `false` | When `true`, seeds 3 demo forms + 9 sample responses on an empty database |
 
 > **Note**: No secrets or API keys are required for core form creation, running, submission, or export.
 
@@ -179,6 +193,26 @@ npm start
 ```bash
 docker compose up -d
 ```
+
+### 5. Running the End-to-End Test Suite
+The repo ships a Playwright suite (`scripts/e2e.mjs`) that drives a real browser
+against a running instance — landing demo, login, template creation, autosave,
+publishing, public submission, response analytics, CSV export, QR code, embed
+script, draft blocking, skip-logic branching, duplication and deletion.
+
+```bash
+npm run build && npm start            # in one terminal
+BASE_URL=http://localhost:3000 npm run test:e2e   # in another
+```
+
+23 checks are executed. If the bundled Playwright browser is not downloaded, point
+the suite at a system Chrome instead:
+
+```bash
+CHROME_PATH=/usr/bin/chromium BASE_URL=http://localhost:3000 npm run test:e2e
+```
+
+> The suite writes screenshots to `/tmp/formcraft-shots`.
 
 ---
 

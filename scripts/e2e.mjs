@@ -2,7 +2,7 @@ import { chromium } from "playwright";
 import fs from "fs";
 
 const BASE = process.env.BASE_URL || "http://localhost:3777";
-const SHOTS = "/tmp/formo-shots";
+const SHOTS = "/tmp/formcraft-shots";
 fs.mkdirSync(SHOTS, { recursive: true });
 
 const results = [];
@@ -11,31 +11,37 @@ function check(name, cond, extra = "") {
   console.log(`${cond ? "✅" : "❌"} ${name}${extra ? " — " + extra : ""}`);
 }
 
-const browser = await chromium.launch();
+// CHROME_PATH lets the suite run against a system Chrome when the bundled
+// Playwright browser has not been downloaded (`npx playwright install`).
+const browser = await chromium.launch(
+  process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {},
+);
 const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } });
 const page = await ctx.newPage();
 
 // ---------- 1. Landing + demo form ----------
 await page.goto(BASE + "/");
 await page.waitForLoadState("domcontentloaded");
-check("landing title", (await page.title()).includes("Formo"));
+check("landing title", (await page.title()).includes("FormCraft"));
 await page.screenshot({ path: `${SHOTS}/01-landing.png`, fullPage: false });
 
-const demoOpt = page.getByRole("button", { name: "All of them" });
+const demoOpt = page.getByRole("button", { name: "A product launch" });
 await demoOpt.click();
 await page.waitForTimeout(400);
-const q2visible = await page.getByRole("heading", { name: "How painful is that bill every month?" }).isVisible();
+const q2visible = await page
+  .getByRole("heading", { name: "How confident are you that people finish your forms?" })
+  .isVisible();
 check("hero demo advances to q2 on click", q2visible);
 await page.keyboard.press("5"); // number key selects rating 5
 await page.waitForTimeout(400);
-const q3visible = await page.getByRole("heading", { name: "Want updates when we ship something great?" }).isVisible();
+const q3visible = await page.getByRole("heading", { name: "Where should we send updates?" }).isVisible();
 check("hero demo advances to q3 via keyboard", q3visible);
 await page.screenshot({ path: `${SHOTS}/02-demo-form.png` });
 
 // ---------- 2. Login ----------
 await page.goto(BASE + "/login");
-await page.getByRole("textbox", { name: "admin@formo.local" }).fill("admin@formo.local");
-await page.getByRole("textbox", { name: "••••••••" }).fill("formo-admin");
+await page.locator('input[type="email"]').fill(process.env.ADMIN_EMAIL || "admin@formcraft.local");
+await page.locator('input[type="password"]').fill(process.env.ADMIN_PASSWORD || "formcraft-admin");
 await page.getByRole("button", { name: "Sign in" }).click();
 await page.waitForURL("**/dashboard", { timeout: 5000 });
 check("login redirects to dashboard", page.url().includes("/dashboard"));
@@ -119,7 +125,7 @@ check("CSV exports with headers + answer", csv.includes("Submitted at") && csv.i
 const qrResp = await ctx.request.get(`${BASE}/api/qr/${slug}`);
 check("QR code renders PNG", (qrResp.headers()["content-type"] || "").includes("image/png"));
 const embedResp = await ctx.request.get(`${BASE}/api/embed.js?id=${slug}`);
-check("embed.js served", (await embedResp.text()).includes("__formoEmbed"));
+check("embed.js served", (await embedResp.text()).includes("__formcraftEmbed"));
 
 // ---------- 10. Draft form blocked ----------
 const draftPage = await ctx.newPage();
