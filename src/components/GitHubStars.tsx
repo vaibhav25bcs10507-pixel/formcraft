@@ -29,9 +29,11 @@ export default function GitHubStars() {
         />
       </svg>
       <span className="hidden sm:inline">Star</span>
-      <span className="min-w-[1.6rem] rounded-full bg-white/10 px-1.5 py-0.5 text-center font-mono text-xs tabular-nums text-white">
-        {stars ?? "–"}
-      </span>
+      {stars !== 0 && (
+        <span className="min-w-[1.6rem] rounded-full bg-white/10 px-1.5 py-0.5 text-center font-mono text-xs tabular-nums text-white">
+          {stars ?? "–"}
+        </span>
+      )}
     </a>
   );
 }

@@ -154,18 +154,23 @@ export default function Home() {
 
           <div className="relative" style={{ perspective: "1200px" }}>
             <div className="pointer-events-none absolute -inset-8 rounded-[32px] bg-gradient-to-br from-indigo-500/20 via-transparent to-cyan-500/20 blur-2xl" aria-hidden="true" />
+            <div className="relative mb-4 flex flex-wrap items-center justify-center gap-2.5">
+              <span className="glass-strong inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-semibold text-neutral-300">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                $0 / month
+              </span>
+              <span className="glass-strong inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-semibold text-neutral-300">
+                <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
+                60s self-host
+              </span>
+              <span className="glass-strong inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-semibold text-neutral-300">
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
+                Your SQLite
+              </span>
+            </div>
             <Tilt max={7} className="relative">
               <LandingDemo />
             </Tilt>
-            <div className="float-chip glass-strong absolute -left-6 top-8 hidden rounded-xl px-3 py-2 text-xs font-semibold text-neutral-200 sm:block" style={{ ["--fr" as string]: "-6deg", animationDelay: "-1.2s" }}>
-              $0 / month
-            </div>
-            <div className="float-chip glass-strong absolute -right-4 top-1/3 hidden rounded-xl px-3 py-2 text-xs font-semibold text-neutral-200 sm:block" style={{ ["--fr" as string]: "5deg", animationDelay: "-3s" }}>
-              ⚡ 60s self-host
-            </div>
-            <div className="float-chip glass-strong absolute -bottom-5 left-1/4 hidden rounded-xl px-3 py-2 text-xs font-semibold text-neutral-200 sm:block" style={{ ["--fr" as string]: "-3deg", animationDelay: "-4.5s" }}>
-              🔒 Your SQLite
-            </div>
           </div>
         </div>
       </section>

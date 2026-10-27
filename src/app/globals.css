@@ -80,15 +80,6 @@ body {
   -webkit-mask-image: linear-gradient(to bottom, transparent 30%, rgba(0, 0, 0, 0.75) 78%, transparent);
 }
 
-@keyframes float-y {
-  0%, 100% { transform: translateY(0) rotate(var(--fr, 0deg)); }
-  50% { transform: translateY(-14px) rotate(var(--fr, 0deg)); }
-}
-
-.float-chip {
-  animation: float-y 5.5s ease-in-out infinite;
-}
-
 @keyframes orb-drift {
   0%, 100% { transform: translate(0, 0) scale(1); }
   33% { transform: translate(36px, -28px) scale(1.08); }
@@ -146,5 +137,5 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .float-chip, .orb, .shine::after, .pulse-glow { animation: none; }
+  .orb, .shine::after, .pulse-glow { animation: none; }
 }
