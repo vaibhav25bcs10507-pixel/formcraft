@@ -1,18 +1,14 @@
 services:
   - type: web
-    name: formo
+    name: formcraft
     runtime: node
-    plan: starter
+    plan: free
     buildCommand: npm ci && npm run build
     startCommand: npm start
     healthCheckPath: /
-    disk:
-      name: formo-data
-      mountPath: /data
-      sizeGB: 1
     envVars:
       - key: DATA_DIR
-        value: /data
+        value: ./data
       - key: NODE_VERSION
         value: 22
       - key: ADMIN_EMAIL
