@@ -3,6 +3,7 @@ import { drizzle } from "drizzle-orm/better-sqlite3";
 import path from "path";
 import fs from "fs";
 import * as schema from "./schema";
+import { seedDemoData } from "./seed";
 
 const DATA_DIR = process.env.DATA_DIR || path.join(process.cwd(), "data");
 fs.mkdirSync(DATA_DIR, { recursive: true });
@@ -39,7 +40,15 @@ function createDb() {
       value TEXT NOT NULL
     );
   `);
-  return drizzle(sqlite, { schema });
+  const database = drizzle(sqlite, { schema });
+  if (process.env.SEED_DEMO === "true") {
+    try {
+      seedDemoData(sqlite);
+    } catch (err) {
+      console.error("Demo seed failed", err);
+    }
+  }
+  return database;
 }
 
 export const db = globalForDb.__formoDb ?? createDb();
