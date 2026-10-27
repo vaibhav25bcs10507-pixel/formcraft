@@ -11,6 +11,17 @@
 [![SQLite](https://img.shields.io/badge/Database-SQLite+Drizzle-003B57?logo=sqlite&logoColor=white)](https://orm.drizzle.team/)
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](./LICENSE)
 
+
+                      ┌───────────────────────────────────────────────┐
+                      │THIS PROJECT DOES NOT PROVIDE HOSTING OPTIONS  │
+                      │   BUT , IS MADE SUCH A WAY TO SELF HOST       │
+                      │     EASILY . DUMMY CREDS ARE GIVEN TO         │
+                      │             TEST DIRECTLY                     │
+                      └───────────────────────────────────────────────┘
+creds: (will be taken down in future)
+mail : purposeno968@gmail.com
+pass : render
+
 ---
 
 ## 📸 Screenshots
@@ -23,6 +34,11 @@
 | Split-screen builder with live preview | Per-question analytics + individual response drill-down |
 | ![Public form](docs/screenshots/06-public-form.png) | ![Login](docs/screenshots/02-login.png) |
 | Conversational runner (one question at a time) | Admin sign-in (HMAC-signed session cookie) |
+
+---
+## video link
+
+
 
 ---
 
@@ -235,35 +251,3 @@ FormCraft is designed to run in any containerized or Node.js environment:
 ### Deploy to Railway / Fly.io / VPS
 Use the included `Dockerfile` and `docker-compose.yml` for automated container deployment.
 
----
-
-## 📽️ Demo & Submission Details
-
-```text
-Project Name: FormCraft — High-Conversion Conversational Form Engine
-Student Name: Vaibhav (25BCS10507)
-Problem Statement: Elimination of form abandonment through conversational UX and self-hosted data ownership
-GitHub Repository: https://github.com/vaibhav25bcs10507-pixel/formcraft
-Deployed Application: https://formcraft-4sqx.onrender.com
-Demo Video: [Link to 3–5 min video demo]
-Tech Stack: Next.js 16, React 19, TypeScript, Tailwind CSS 4, SQLite, Drizzle ORM, Lucide
-Major Features:
-  1. Conversational step-by-step form runner with keyboard navigation
-  2. Visual drag-and-drop form builder with live preview
-  3. Conditional skip logic branching engine
-  4. Real-time response analytics, charts, and CSV export
-  5. Anti-spam honeypot, rate limiting, and webhook dispatching
-```
-
----
-
-## 📜 Acknowledgements & Attribution
-
-FormCraft is an open-source engineering project built upon the architectural foundations of [Formo](https://github.com/Abhishekpundir23/formo). Custom additions include:
-- Extended multi-criteria form dashboard with real-time title search, status filters (Live / Draft), and sorting.
-- Enhanced response metric summary cards with quick timestamp triage and completion indicators.
-- Interactive keyboard navigation badges and dynamic completion percentage meters.
-- New specialized academic and developer evaluation templates (*Project Submission*, *Developer Bug Report*).
-- Brand and UI customization for student end-term presentation.
-
-Licensed under the **AGPL-3.0 License**.
